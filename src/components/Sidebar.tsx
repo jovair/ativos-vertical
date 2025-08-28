@@ -20,7 +20,7 @@ function Category({ category, isExpanded, onToggle }: CategoryProps) {
         onClick={onToggle}
         className="flex items-center w-full text-left p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors group"
       >
-        <Folder className="h-4 w-4 mr-2 text-gray-500 group-hover:text-primary" />
+                    <Folder className="h-4 w-4 mr-2 text-gray-500 group-hover:text-primary" />
         <span className="flex-1 text-sm font-medium">{category.name}</span>
         {isExpanded ? (
           <ChevronDown className="h-4 w-4 text-gray-400" />
@@ -48,6 +48,8 @@ function Category({ category, isExpanded, onToggle }: CategoryProps) {
 
 export default function Sidebar() {
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(['Ativos Comerciais']))
+  const [expandedDescricaoTecnica, setExpandedDescricaoTecnica] = useState(true)
+  const [expandedMapeamento, setExpandedMapeamento] = useState(true)
 
   const toggleCategory = (categoryName: string) => {
     const newExpanded = new Set(expandedCategories)
@@ -81,46 +83,68 @@ export default function Sidebar() {
 
       {/* Descrição Técnica Section */}
       <div className="p-6 border-b border-gray-200">
-        <h3 className="text-sm font-semibold text-gray-900 mb-4 flex items-center">
-          <Code className="h-4 w-4 mr-2 text-gray-500" />
-          Descrição Técnica
-        </h3>
-        <div className="space-y-1">
-          <button className="flex items-center w-full text-left p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group">
-            <FileText className="h-4 w-4 mr-2 text-gray-400 group-hover:text-primary" />
-            <span className="flex-1">Plataforma Vertical Loto</span>
-          </button>
-          <button className="flex items-center w-full text-left p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group">
-            <FileText className="h-4 w-4 mr-2 text-gray-400 group-hover:text-primary" />
-            <span className="flex-1">Ambiente AWS</span>
-          </button>
-          <button className="flex items-center w-full text-left p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group">
-            <FileText className="h-4 w-4 mr-2 text-gray-400 group-hover:text-primary" />
-            <span className="flex-1">Squad de Tecnologia</span>
-          </button>
-        </div>
+        <button
+          onClick={() => setExpandedDescricaoTecnica(!expandedDescricaoTecnica)}
+          className="flex items-center w-full text-left mb-4 text-sm font-semibold text-gray-900 hover:text-gray-700 transition-colors group"
+        >
+          <Code className="h-4 w-4 mr-2 text-gray-500 group-hover:text-primary" />
+          <span className="flex-1">Descrição Técnica</span>
+          {expandedDescricaoTecnica ? (
+            <ChevronDown className="h-4 w-4 text-gray-400" />
+          ) : (
+            <ChevronRight className="h-4 w-4 text-gray-400" />
+          )}
+        </button>
+        
+        {expandedDescricaoTecnica && (
+          <div className="space-y-1">
+            <button className="flex items-center w-full text-left p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group">
+              <FileText className="h-4 w-4 mr-2 text-gray-400 group-hover:text-primary" />
+              <span className="flex-1">Plataforma Vertical Loto</span>
+            </button>
+            <button className="flex items-center w-full text-left p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group">
+              <FileText className="h-4 w-4 mr-2 text-gray-400 group-hover:text-primary" />
+              <span className="flex-1">Ambiente AWS</span>
+            </button>
+            <button className="flex items-center w-full text-left p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group">
+              <FileText className="h-4 w-4 mr-2 text-gray-400 group-hover:text-primary" />
+              <span className="flex-1">Squad de Tecnologia</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Mapeamento de Processos Section */}
       <div className="p-6 border-b border-gray-200">
-        <h3 className="text-sm font-semibold text-gray-900 mb-4 flex items-center">
-          <Zap className="h-4 w-4 mr-2 text-gray-500" />
-          Mapeamento de Processos
-        </h3>
-        <div className="space-y-1">
-          <button className="flex items-center w-full text-left p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group">
-            <FileText className="h-4 w-4 mr-2 text-gray-400 group-hover:text-primary" />
-            <span className="flex-1">Modelo Ágil Kanban</span>
-          </button>
-          <button className="flex items-center w-full text-left p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group">
-            <FileText className="h-4 w-4 mr-2 text-gray-400 group-hover:text-primary" />
-            <span className="flex-1">Processos Departamentais</span>
-          </button>
-          <button className="flex items-center w-full text-left p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group">
-            <FileText className="h-4 w-4 mr-2 text-gray-400 group-hover:text-primary" />
-            <span className="flex-1">Procedimentos de Sorteio</span>
-          </button>
-        </div>
+        <button
+          onClick={() => setExpandedMapeamento(!expandedMapeamento)}
+          className="flex items-center w-full text-left mb-4 text-sm font-semibold text-gray-900 hover:text-gray-700 transition-colors group"
+        >
+          <Zap className="h-4 w-4 mr-2 text-gray-400 group-hover:text-primary" />
+          <span className="flex-1">Mapeamento de Processos</span>
+          {expandedMapeamento ? (
+            <ChevronDown className="h-4 w-4 text-gray-400" />
+          ) : (
+            <ChevronRight className="h-4 w-4 text-gray-400" />
+          )}
+        </button>
+        
+        {expandedMapeamento && (
+          <div className="space-y-1">
+            <button className="flex items-center w-full text-left p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group">
+              <FileText className="h-4 w-4 mr-2 text-gray-400 group-hover:text-primary" />
+              <span className="flex-1">Modelo Ágil Kanban</span>
+            </button>
+            <button className="flex items-center w-full text-left p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group">
+              <FileText className="h-4 w-4 mr-2 text-gray-400 group-hover:text-primary" />
+              <span className="flex-1">Processos Departamentais</span>
+            </button>
+            <button className="flex items-center w-full text-left p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors group">
+              <FileText className="h-4 w-4 mr-2 text-gray-400 group-hover:text-primary" />
+              <span className="flex-1">Procedimentos de Sorteio</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Footer */}

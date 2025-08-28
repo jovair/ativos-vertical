@@ -35,6 +35,7 @@ body {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-clamp: 2;
   }
   
   .line-clamp-3 {
@@ -42,5 +43,16 @@ body {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-clamp: 3;
   }
+}
+
+/* Hide Next.js development indicator */
+[data-nextjs-portal] {
+  display: none !important;
+}
+
+/* Hide Next.js build activity indicator */
+[data-nextjs-build-activity] {
+  display: none !important;
 }

@@ -76,7 +76,7 @@ export default function DocumentList({ activeTab, searchQuery = '' }: DocumentLi
   const getIcon = (type: string) => {
     switch (type) {
       case 'markdown':
-        return <FileText className="h-5 w-5 text-blue-600" />
+        return <FileText className="h-5 w-5 text-primary" />
       case 'image':
         return <Image className="h-5 w-5 text-green-600" />
       default:

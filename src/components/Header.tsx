@@ -26,15 +26,15 @@ export default function Header() {
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-3">
-        <div className="flex items-center justify-between h-40">
+      <div className="max-w-7xl mx-auto px-4 py-1">
+        <div className="flex items-center justify-between h-12">
           <div className="flex items-center">
             <Image
               src="/logo-vertical-loto.svg"
               alt="Vertical Loto"
-              width={144}
-              height={144}
-              className="w-36 h-36"
+              width={104}
+              height={104}
+              className="w-26 h-26"
             />
           </div>
           
@@ -44,7 +44,7 @@ export default function Header() {
               <input
                 type="text"
                 placeholder="Buscar na documentação..."
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
+                className="w-full pl-10 pr-4 py-1.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
                 value={searchInput}
                 onChange={handleSearchChange}
               />
@@ -52,7 +52,7 @@ export default function Header() {
           </div>
           
           <div className="flex items-center">
-            <button className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 hover:bg-gray-50 rounded-lg transition-colors">
+            <button className="px-3 py-1.5 text-sm text-gray-600 hover:text-gray-800 hover:bg-gray-50 rounded-lg transition-colors">
               Entrar
             </button>
           </div>

@@ -26,7 +26,7 @@ export default function TabNavigation({ activeTab, onTabChange }: TabNavigationP
               onClick={() => onTabChange(tab.id)}
               className={`py-3 px-4 border-b-2 font-medium text-sm transition-all duration-200 whitespace-nowrap flex items-center space-x-2 ${
                 activeTab === tab.id
-                  ? 'border-primary text-primary bg-primary/5'
+                  ? 'border-primary text-blue-600 bg-primary/5'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 hover:bg-gray-50'
               }`}
             >
